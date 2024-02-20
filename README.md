@@ -1,2 +1,2 @@
-# MERN-Auth
+# Movie App
  
