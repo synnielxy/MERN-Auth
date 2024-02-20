@@ -15,6 +15,8 @@ import HomeScreen from "./screens/HomeScreen.jsx";
 import LoginScreen from "./screens/LoginScreen.jsx";
 import RegisterScreen from "./screens/RegisterScreen.jsx";
 import ProfileScreen from './screens/ProfileScreen.jsx';
+import MovieDetailScreen from "./screens/MovieDetailScreen.jsx";
+import FavoriteScreen from "./screens/FavoriteScreen.jsx";
 import PrivateRoute from './components/PrivateRoute.jsx';
 
 const router = createBrowserRouter(
@@ -23,6 +25,8 @@ const router = createBrowserRouter(
       <Route index={true} path="/" element={<HomeScreen />} />
       <Route path="/login" element={<LoginScreen />} /> 
       <Route path="/register" element={<RegisterScreen />} />
+      <Route path="/movie/:movieId" element={<MovieDetailScreen />} />
+      <Route path="/favorite" element={<FavoriteScreen />} />
       <Route path='' element={<PrivateRoute />}>
         <Route path='/profile' element={<ProfileScreen />} />
       </Route>

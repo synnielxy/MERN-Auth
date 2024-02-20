@@ -7,6 +7,8 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import connectDB from './config/db.js';
 const port = process.env.PORT || 5000;
 import userRoutes from './routes/userRoutes.js';
+import commentRoutes from './routes/commentRoutes.js';
+import favoriteRoutes from './routes/favoriteRoutes.js'
 
 connectDB();
 
@@ -18,6 +20,8 @@ app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 
 app.use('/api/users', userRoutes);
+app.use('/api/comment', commentRoutes);
+app.use('/api/favorite', favoriteRoutes);
 
 if(process.env.NODE_ENV === 'production') {
   const __dirname = path.resolve();
