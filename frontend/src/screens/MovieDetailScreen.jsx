@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Row, Col, Button } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { useGetMovieQuery, useGetCastsQuery } from "../slices/tmdbApiSlice";
 import { useGetCommentsQuery } from "../slices/commentApiSlice";
 import Hero from "../components/Hero";
@@ -11,6 +12,7 @@ import Comments from "../components/Comment/Comments";
 import { IMAGE_BASE_URL, IMAGE_SIZE, POSTER_SIZE } from "../Config";
 
 function MovieDetailScreen() {
+  const { userInfo } = useSelector((state) => state.auth);
   const { movieId } = useParams();
   const [Movie, setMovie] = useState([]);
   const [Casts, setCasts] = useState([]);
@@ -71,7 +73,7 @@ function MovieDetailScreen() {
       <div style={{ width: "85%", margin: "1rem auto" }}>
         <div style={{ display: "flex", justifyContent: "flex-end" }}>
           <Favorite
-            userFrom={localStorage.getItem("userId")}
+            userFrom={userInfo._id}
             movieId={movieId}
             movieInfo={Movie}
           />
